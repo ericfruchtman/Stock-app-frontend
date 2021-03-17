@@ -6,8 +6,8 @@ function App() {
   return (
     <>
 
-    <div className={'w-full p-5 bg-blue-200 border-b-2 border-blue-400'}>
-      <h1 className={'text-xl font-bold text-center text-blue-600 tracking-wider uppercase'}>Paper Trader</h1>
+    <div className={'w-full p-5 bg-gradient-to-r from-blue-400 via-gray-500 to-green-500'}>
+      <h1 className={'text-xl font-bold font-sans text-center text-green-50 tracking-wider uppercase'}>Stock Trader</h1>
 
     </div>
 

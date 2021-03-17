@@ -57,8 +57,9 @@ function Search (props) {
         // if not show an error
         // if yes, make a purchase and add a field in the portfolio table
 
-        if(buyQuantity == 0){
+        if(buyQuantity === 0){
             alert('Buy quantity needs to be greater than 0!')
+            return null;
         }
 
         let cashNeeded = buyQuantity * currentStock.data.price;
@@ -66,7 +67,8 @@ function Search (props) {
 
         if(cashNeeded > currentWallet.value){
             alert('You dont have enough cash!');
-        } else {
+        } 
+        else {
             // make the purchase
             // making a field in the database table for portfolio
             let body = {
@@ -96,6 +98,8 @@ function Search (props) {
             setBuyQuantity(0)
 
             alert('Success!')
+
+            window.location.reload();
         }
 
         // stock symbol
@@ -116,7 +120,7 @@ function Search (props) {
                     <input value={inputText} onChange={onInputChange} type="text" className={'border w-full p-3 rounded-full border-gray-300'}/>
                 </div>
                 <div className={'border p-5'}>
-                    <span onClick={fetchQuote} className={'bg-gray-600 cursor-pointer p-2 rounded text-white text-xl pl-5 pr-5'}>Get Quote</span>
+                    <span onClick={fetchQuote} className={'bg-transparent hover:bg-gray-600 cursor-pointer text-gray-600 p-2 rounded hover:text-white text-xl pl-5 pr-5 border border-gray hover:border-transparent rounded'}>Get Quote</span>
                 </div>
             </div>
 
@@ -129,7 +133,7 @@ function Search (props) {
 
                 <span>
                         <input type="number" onChange={onBuyChange} className={'border'} value={buyQuantity} />&nbsp;&nbsp;
-                        <span className={'bg-blue-600 cursor-pointer p-2 rounded text-white text-xl pl-5 pr-5'} onClick={buyStock}>Buy</span>&nbsp;&nbsp;&nbsp;
+                        <span className={'bg-transparent hover:bg-blue-500 cursor-pointer text-blue-500 font-semibold hover:text-white py-2 px-4 border border-blue hover:border-transparent rounded'} onClick={buyStock}>Buy</span>&nbsp;&nbsp;&nbsp;
                         </span>
                     {/*<span className={'bg-red-600 cursor-pointer p-2 rounded text-white text-xl pl-5 pr-5'}>Sell</span>*/}
 

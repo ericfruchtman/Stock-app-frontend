@@ -26,6 +26,14 @@ function Portfolio(props) {
         fetchPortfolio()
     }, [])
 
+    const sellStock = async (id) => {
+        console.log('selling the stock with the id number', id);
+
+        await fetch(`http://localhost:3000/api/v1/portfolio/${id}`, {method: 'DELETE'})
+        alert('Success!');
+        window.location.reload();
+    };
+
 
 
     return (
@@ -44,6 +52,12 @@ function Portfolio(props) {
                             <td className={'border text-center'}>{item.symbol}</td>
                             <td className={'border text-center'}>{item.quantity}</td>
                             <td className={'border text-center'}>{item.price}</td>
+                            <td className={'border text-center p-4'}>
+                                <span onClick={() => {
+                                    sellStock(item.id);
+                                }} className={'bg-transparent hover:bg-blue-500 cursor-pointer text-blue-500 font-semibold hover:text-white py-2 px-4 border border-blue hover:border-transparent rounded'}>Sell</span>
+
+                            </td>
                         </tr>
 
                     })}
